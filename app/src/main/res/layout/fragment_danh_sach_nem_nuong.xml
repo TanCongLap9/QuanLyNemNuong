@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ui.fragment.DanhSachNemNuongFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:gravity="center"
+        android:text="Thực đơn"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <SearchView
+        android:id="@+id/danh_sach_nem_nuong_tim_kiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm kiếm bằng mã hoặc tên"
+        android:layout_gravity="end" />
+
+    <Button
+        android:id="@+id/danh_sach_nem_nuong_gio_hang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Giỏ hàng" />
+
+    <GridView
+        android:id="@+id/danh_sach_nem_nuong_danh_sach"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:listSelector="@color/blue_700"
+        android:choiceMode="singleChoice"
+        android:layout_weight="1"
+        tools:listitem="@layout/listitem_nemnuong" />
+
+</LinearLayout>

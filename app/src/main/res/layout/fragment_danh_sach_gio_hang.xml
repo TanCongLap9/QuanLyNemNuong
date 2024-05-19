@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.DanhSachGioHangFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:gravity="center"
+        android:text="Giỏ hàng"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <GridView
+        android:id="@+id/danh_sach_gio_hang_danh_sach"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/blue_700"
+        tools:listitem="@layout/listitem_nemnuong" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondary"
+        android:gravity="center"
+        android:padding="4dp">
+
+        <ImageButton
+            android:id="@+id/danh_sach_gio_hang_thanh_toan"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_payments_24dp" />
+
+        <ImageButton
+            android:id="@+id/danh_sach_gio_hang_xoa"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_delete_24dp" />
+    </LinearLayout>
+
+</LinearLayout>

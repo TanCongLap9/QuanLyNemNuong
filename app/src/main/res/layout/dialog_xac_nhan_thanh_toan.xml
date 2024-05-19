@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="Phương thức giao dịch"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:checked="true"
+                android:text="Thẻ tín dụng" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Tiền mặt" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Voucher" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:text="Phương thức vận chuyển"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/xac_nhan_thanh_toan_nhan_tai_quan"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:checked="true"
+                android:text="Nhận tại quán" />
+
+            <RadioButton
+                android:id="@+id/xac_nhan_thanh_toan_giao_hang"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Giao hàng (tính phí 5%/sản phẩm)" />
+
+            <RadioButton
+                android:id="@+id/xac_nhan_thanh_toan_giao_hang_hoa_toc"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Giao hàng hoả tốc (tính phí 15%/sản phẩm)" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng số tiền: "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/xac_nhan_thanh_toan_tong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30.000.00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&#x20AB;"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ui.fragment.DanhSachKhachHangFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:gravity="center"
+        android:text="Danh sách khách hàng"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <SearchView
+        android:id="@+id/danh_sach_khach_hang_tim_kiem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm kiếm bằng mã hoặc tên"
+        android:layout_gravity="end" />
+
+    <GridView
+        android:id="@+id/danh_sach_khach_hang_danh_sach"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/blue_700"
+        tools:listitem="@layout/listitem_khachhang" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:background="?attr/colorSecondary"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/danh_sach_khach_hang_them"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_add_24dp" />
+
+        <ImageButton
+            android:id="@+id/danh_sach_khach_hang_sua"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_build_24dp" />
+    </LinearLayout>
+
+</LinearLayout>

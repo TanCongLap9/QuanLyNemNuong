@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_badge_24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/listitem_nhanvien_hotennv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOTENNV"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/listitem_nhanvien_manv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_key_24dp"
+            android:drawablePadding="4dp"
+            android:text="MANV" />
+
+        <TextView
+            android:id="@+id/listitem_nhanvien_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_alternate_email_24dp"
+            android:drawablePadding="4dp"
+            android:text="Email" />
+
+        <TextView
+            android:id="@+id/listitem_nhanvien_sdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_phone_24dp"
+            android:drawablePadding="4dp"
+            android:text="SDT" />
+
+    </LinearLayout>
+</LinearLayout>

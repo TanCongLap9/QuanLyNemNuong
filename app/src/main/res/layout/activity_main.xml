@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_action_bar">
+
+        <fragment
+            android:name="com.baitapandroid.quanlynemnuong.ui.fragment.MainFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/main_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFCC80">
+
+        <ImageView
+            android:id="@+id/main_menu_toggler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_menu_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/app_name"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/main_drawer_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="#c0000000" />
+
+    <LinearLayout
+        android:id="@+id/main_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/colorBackground"
+        android:orientation="vertical"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp">
+
+        <ImageButton
+            android:id="@+id/main_menu_toggler2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:padding="8dp"
+            android:src="@drawable/ic_menu_24dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/nem_nuong_mau_3" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="Mua sắm"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/main_nem_nuong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Mua nem nướng"
+                    app:drawableStartCompat="@drawable/ic_kebab_dining_24dp" />
+
+                <TextView
+                    android:id="@+id/main_tra_cuu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Tra cứu giao dịch"
+                    app:drawableStartCompat="@drawable/ic_search_24dp" />
+
+                <TextView
+                    android:id="@+id/main_quan_ly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="Quản lý"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/main_khach_hang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Quản lý khách hàng"
+                    app:drawableStartCompat="@drawable/ic_person_24dp" />
+
+                <TextView
+                    android:id="@+id/main_nhan_vien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Quản lý nhân viên"
+                    app:drawableStartCompat="@drawable/ic_badge_24dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="Tài khoản"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/main_tai_khoan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Thông tin tài khoản"
+                    app:drawableStartCompat="@drawable/ic_person_24dp" />
+
+                <TextView
+                    android:id="@+id/main_dang_xuat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Đăng xuất"
+                    app:drawableStartCompat="@drawable/ic_logout_24dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:text="Thông tin"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/main_ung_dung"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="64dp"
+                    android:text="Thông tin ứng dụng"
+                    app:drawableStartCompat="@drawable/ic_info_24dp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

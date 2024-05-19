@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.TraCuuFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:gravity="center"
+        android:text="Tra cứu"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/tra_cuu_ngay_bat_dau"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Từ ngày"
+            android:inputType="datetime"
+            android:queryHint="Tìm kiếm bằng mã hoặc tên" />
+
+        <EditText
+            android:id="@+id/tra_cuu_ngay_ket_thuc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Đến ngày"
+            android:inputType="datetime"
+            android:queryHint="Tìm kiếm bằng mã hoặc tên" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/tra_cuu_danh_sach"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/blue_700"
+        tools:listitem="@layout/listitem_khachhang" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondary"
+        android:gravity="center"
+        android:padding="4dp">
+
+        <ImageButton
+            android:id="@+id/tra_cuu_tra_cuu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_search_24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
