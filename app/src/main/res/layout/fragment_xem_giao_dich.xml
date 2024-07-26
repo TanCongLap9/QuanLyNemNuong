@@ -1,213 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:layout_height="wrap_content"
+    android:background="?android:attr/colorBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".ui.fragment.XemGiaoDichFragment">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="32dp"
-        tools:context=".ui.fragment.XemGiaoDichFragment">
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Thông tin về\ngiao dịch"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Thông tin về\ngiao dịch"
-            android:textSize="32sp"
-            android:textStyle="bold" />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mã: " />
-
-                <TextView
-                    android:id="@+id/xem_giao_dich_magd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MAGD" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Khách hàng: " />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/xem_giao_dich_makh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MAKH" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" (" />
-
-                    <TextView
-                        android:id="@+id/xem_giao_dich_hotenkh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HOTENKH" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=")" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nhân viên: " />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/xem_giao_dich_manv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MANV" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" (" />
-
-                    <TextView
-                        android:id="@+id/xem_giao_dich_hotennv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HOTENNV" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=")" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phí vận chuyển: " />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/xem_giao_dich_phivanchuyen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PHIVANCHUYEN" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="&#x20AB;" />
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thời gian đặt: " />
-
-                <TextView
-                    android:id="@+id/xem_giao_dich_thoi_gian_dat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="THOIGIANDAT" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thời gian giao: " />
-
-                <TextView
-                    android:id="@+id/xem_giao_dich_thoi_gian_giao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PHIVANCHUYEN" />
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Chi tiết"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <GridView
-            android:id="@+id/xem_giao_dich_danhsach"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/listitem_chitietgiaodich" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thành tiền: "
-                android:textSize="20sp" />
+                android:text="Mã: " />
+
+            <TextView
+                android:id="@+id/xem_giao_dich_magd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAGD" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khách hàng: " />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/xem_giao_dich_thanh_tien"
+                    android:id="@+id/xem_giao_dich_makh"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="500.000" />
+                    android:layout_height="wrap_content"
+                    android:text="MAKH" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" (" />
+
+                <TextView
+                    android:id="@+id/xem_giao_dich_hotenkh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOTENKH" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=")" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhân viên: " />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/xem_giao_dich_manv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MANV" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" (" />
+
+                <TextView
+                    android:id="@+id/xem_giao_dich_hotennv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOTENNV" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=")" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phí vận chuyển: " />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/xem_giao_dich_phivanchuyen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHIVANCHUYEN" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="&#x20AB;" />
             </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian đặt: " />
+
+            <TextView
+                android:id="@+id/xem_giao_dich_thoi_gian_dat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THOIGIANDAT" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian giao: " />
+
+            <TextView
+                android:id="@+id/xem_giao_dich_thoi_gian_giao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PHIVANCHUYEN" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Chi tiết"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <GridView
+        android:id="@+id/xem_giao_dich_danhsach"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/listitem_chitietgiaodich" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thành tiền: "
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/xem_giao_dich_thanh_tien"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="500.000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&#x20AB;" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

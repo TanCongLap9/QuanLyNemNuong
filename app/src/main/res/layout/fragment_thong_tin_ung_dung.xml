@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2024.04.09" />
+                    android:text="2024.04.23" />
             </LinearLayout>
 
             <LinearLayout
@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- Quản lý" />
+                    android:text="- Quản lý nhân viên và khách hàng (đối với tài khoản nhân viên)" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

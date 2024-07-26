@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.baitapandroid.quanlynemnuong.R;
+import com.baitapandroid.quanlynemnuong.SqlConnection;
 import com.baitapandroid.quanlynemnuong.model.ChiTietGiaoDichModel;
+import com.baitapandroid.quanlynemnuong.model.GioHangModel;
 import com.baitapandroid.quanlynemnuong.model.NemNuongModel;
 import com.baitapandroid.quanlynemnuong.ui.DanhGia;
 import com.baitapandroid.quanlynemnuong.ui.activity.MainActivity;
@@ -32,6 +34,7 @@ public class XemNemNuongFragment extends Fragment {
     private ImageView hinhAnh;
     private DanhGia danhGia;
     private Button nutSua;
+    private SqlConnection mConnection;
 
     public XemNemNuongFragment(NemNuongModel model) {
         this.model = model;
@@ -52,6 +55,7 @@ public class XemNemNuongFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mConnection = new SqlConnection(getContext());
         loadViews();
     }
 
@@ -86,8 +90,26 @@ public class XemNemNuongFragment extends Fragment {
     }
 
     private void mua(View view) {
-        List<NemNuongModel> chiTietGiaoDichModels = (List<NemNuongModel>)getActivity().getIntent().getSerializableExtra(MainActivity.INTENT_GIOHANG);
-        chiTietGiaoDichModels.add(model);
+        GioHangModel gioHangModel = mConnection.getGioHang(MainActivity.taiKhoanHienTai.getMaKh(), model.getMaSp());
+        if (gioHangModel != null) { // Tăng số lượng
+            gioHangModel.setSoLuong(gioHangModel.getSoLuong() + 1);
+            mConnection.updateGioHang(gioHangModel);
+        }
+        else { // Thêm sản phẩm mới vào giỏ hàng
+            mConnection.insertGioHang(new GioHangModel(
+                    model.getMaSp(),
+                    model.getTenSp(),
+                    model.getHinhAnh(),
+                    model.getMoTa(),
+                    model.getDonGia(),
+                    model.getSao(),
+                    model.getMaNsx(),
+                    model.getTenNpp(),
+                    model.getDcNpp(),
+                    MainActivity.taiKhoanHienTai.getMaKh(),
+                    1
+            ));
+        }
         Toast.makeText(getContext(), "Đặt vào giỏ hàng thành công.", Toast.LENGTH_SHORT).show();
         getActivity()
                 .getSupportFragmentManager()

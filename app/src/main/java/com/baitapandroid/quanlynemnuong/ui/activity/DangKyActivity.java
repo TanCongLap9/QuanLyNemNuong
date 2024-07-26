@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.baitapandroid.quanlynemnuong.model.KhachHangModel;
 import com.baitapandroid.quanlynemnuong.R;
@@ -59,8 +60,16 @@ public class DangKyActivity extends AppCompatActivity {
                 matKhau.getText().toString()
         );
         SqlConnection connection = new SqlConnection(this);
-        connection.insertKhachHang(model);
-        connection.close();
+        try {
+            connection.insertKhachHang(model, false);
+        }
+        catch (Exception exc) {
+            Toast.makeText(this, "Có lỗi xảy ra: " + exc.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        finally {
+            connection.close();
+        }
         new AlertDialog.Builder(this)
                 .setTitle("Đăng ký thành công")
                 .setMessage("Quý khách vui lòng sử dụng tài khoản đã đăng ký để đăng nhập vào hệ thống.")

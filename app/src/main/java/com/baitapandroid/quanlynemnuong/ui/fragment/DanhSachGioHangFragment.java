@@ -3,11 +3,13 @@ package com.baitapandroid.quanlynemnuong.ui.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -22,9 +24,12 @@ import com.baitapandroid.quanlynemnuong.R;
 import com.baitapandroid.quanlynemnuong.SqlConnection;
 import com.baitapandroid.quanlynemnuong.model.ChiTietGiaoDichModel;
 import com.baitapandroid.quanlynemnuong.model.GiaoDichModel;
+import com.baitapandroid.quanlynemnuong.model.GioHangModel;
 import com.baitapandroid.quanlynemnuong.model.KhachHangModel;
 import com.baitapandroid.quanlynemnuong.model.NemNuongModel;
+import com.baitapandroid.quanlynemnuong.ui.activity.DangNhapActivity;
 import com.baitapandroid.quanlynemnuong.ui.activity.MainActivity;
+import com.baitapandroid.quanlynemnuong.ui.adapter.GioHangAdapter;
 import com.baitapandroid.quanlynemnuong.ui.adapter.NemNuongAdapter;
 
 import java.util.ArrayList;
@@ -34,10 +39,10 @@ import java.util.Random;
 
 public class DanhSachGioHangFragment extends Fragment {
     private GridView mDanhSach;
-    private NemNuongAdapter mAdapter;
-    private ImageButton mThanhToan, mXoa;
+    private GioHangAdapter mAdapter;
+    private ImageButton mThanhToan, mXoa, mChinhSoLuong;
     private int mSelected = -1;
-    private List<NemNuongModel> mModels;
+    private List<GioHangModel> mModels;
     private SqlConnection mConnection;
     private int phiVanChuyen = 0;
     private int tongGiaSanPham = 0; // Tổng giá của các sản phẩm chưa tính phí
@@ -63,15 +68,18 @@ public class DanhSachGioHangFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mModels = (List<NemNuongModel>)getActivity().getIntent().getSerializableExtra(MainActivity.INTENT_GIOHANG);
-        mAdapter = new NemNuongAdapter(getContext(), mModels);
+        mConnection = new SqlConnection(getContext());
+        mModels = mConnection.getGioHangByNguoiDung(MainActivity.taiKhoanHienTai.getMaKh());
+        mAdapter = new GioHangAdapter(getContext(), mModels);
         mDanhSach = getView().findViewById(R.id.danh_sach_gio_hang_danh_sach);
         mThanhToan = getView().findViewById(R.id.danh_sach_gio_hang_thanh_toan);
+        mChinhSoLuong = getView().findViewById(R.id.danh_sach_gio_hang_chinh_so_luong);
         mXoa = getView().findViewById(R.id.danh_sach_gio_hang_xoa);
 
         mDanhSach.setAdapter(mAdapter);
         mDanhSach.setOnItemClickListener(this::onItemClick);
         mThanhToan.setOnClickListener(this::xacNhanThanhToan);
+        mChinhSoLuong.setOnClickListener(this::chinhSoLuong);
         mXoa.setOnClickListener(this::xoa);
     }
 
@@ -91,8 +99,8 @@ public class DanhSachGioHangFragment extends Fragment {
         tong = xacNhanThanhToan.findViewById(R.id.xac_nhan_thanh_toan_tong);
 
         tongGiaSanPham = 0;
-        for (NemNuongModel model : mModels)
-            tongGiaSanPham += model.getDonGia();
+        for (GioHangModel model : mModels)
+            tongGiaSanPham += model.getDonGia() * model.getSoLuong();
 
         nhanTaiQuan.setOnCheckedChangeListener(this::reloadGia);
         giaoHang.setOnCheckedChangeListener(this::reloadGia);
@@ -119,7 +127,6 @@ public class DanhSachGioHangFragment extends Fragment {
     }
 
     public void thanhToan(DialogInterface dialogInterface, int i) {
-        KhachHangModel taiKhoan = (KhachHangModel)getActivity().getIntent().getSerializableExtra(MainActivity.INTENT_TAIKHOANHIENTAI);
         mConnection = new SqlConnection(getContext());
 
         Random random = new Random();
@@ -128,7 +135,7 @@ public class DanhSachGioHangFragment extends Fragment {
 
         int maGd = mConnection.insertGiaoDich(new GiaoDichModel(
                 -1,
-                taiKhoan.getMaKh(),
+                MainActivity.taiKhoanHienTai.getMaKh(),
                 randomMaNv,
                 phiVanChuyen,
                 new Date(),
@@ -137,8 +144,14 @@ public class DanhSachGioHangFragment extends Fragment {
                 ""
         ));
 
-        List<ChiTietGiaoDichModel> ctgdModels = new ArrayList<>();
-        for (NemNuongModel model : mModels) {
+        List<GioHangModel> cacGioHang = mConnection.getGioHangByNguoiDung(MainActivity.taiKhoanHienTai.getMaKh());
+        for (GioHangModel gioHangModel : cacGioHang) {
+            mConnection.insertChiTietGiaoDich(new ChiTietGiaoDichModel(maGd, gioHangModel.getMaSp(), gioHangModel.getTenSp(), gioHangModel.getSoLuong(), gioHangModel.getDonGia()));
+        }
+
+
+        /*List<ChiTietGiaoDichModel> ctgdModels = new ArrayList<>();
+        for (GioHangModel model : mModels) {
             boolean hasMaGd = false;
             for (ChiTietGiaoDichModel ctgdModel : ctgdModels)
                 if (ctgdModel.getMaSp() == model.getMaSp()) {
@@ -151,9 +164,10 @@ public class DanhSachGioHangFragment extends Fragment {
             }
         }
         for (ChiTietGiaoDichModel model : ctgdModels)
-            mConnection.insertChiTietGiaoDich(model);
+            mConnection.insertChiTietGiaoDich(model);*/
 
         mModels.clear();
+        mConnection.clearGioHang(cacGioHang.get(0));
         mAdapter.notifyDataSetChanged();
         getActivity()
                 .getSupportFragmentManager()
@@ -164,12 +178,49 @@ public class DanhSachGioHangFragment extends Fragment {
         mConnection.close();
     }
 
+    public void chinhSoLuong(View view) {
+        if (mSelected == -1) {
+            Toast.makeText(getContext(), "Vui lòng chọn nem nướng cần loại bỏ.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final EditText input = new EditText(getContext());
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setText(Integer.toString(mModels.get(mSelected).getSoLuong()));
+        new AlertDialog.Builder(getContext()).setView(input)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try {
+                            if (Integer.parseInt(input.getText().toString()) < -1)
+                                Toast.makeText(getContext(), "Vui lòng nhập số lượng lớn hơn 0.", Toast.LENGTH_SHORT).show();
+                            else {
+                                mModels.get(mSelected).setSoLuong(Integer.parseInt(input.getText().toString()));
+                                mConnection.updateGioHang(mModels.get(mSelected));
+                                mSelected = -1;
+                                mAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        catch (Exception e) {
+                            Toast.makeText(getContext(), "Vui lòng nhập số vào đây.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+    }
+
     public void xoa(View view) {
         if (mSelected == -1) {
             Toast.makeText(getContext(), "Vui lòng chọn nem nướng cần loại bỏ.", Toast.LENGTH_SHORT).show();
             return;
         }
         mModels.remove(mSelected);
+        mConnection.deleteGioHang(mModels.get(mSelected));
         mSelected = -1;
         mAdapter.notifyDataSetChanged();
     }

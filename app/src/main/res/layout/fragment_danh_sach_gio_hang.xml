@@ -39,6 +39,12 @@
             android:src="@drawable/ic_payments_24dp" />
 
         <ImageButton
+            android:id="@+id/danh_sach_gio_hang_chinh_so_luong"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_dialpad_24dp" />
+
+        <ImageButton
             android:id="@+id/danh_sach_gio_hang_xoa"
             android:layout_width="48dp"
             android:layout_height="48dp"

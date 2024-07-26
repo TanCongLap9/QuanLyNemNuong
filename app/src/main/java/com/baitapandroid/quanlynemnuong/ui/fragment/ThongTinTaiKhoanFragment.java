@@ -58,7 +58,7 @@ public class ThongTinTaiKhoanFragment extends Fragment {
 
         doiMatKhau.setOnClickListener(this::doiMatKhau);
 
-        model = (KhachHangModel)getActivity().getIntent().getSerializableExtra(MainActivity.INTENT_TAIKHOANHIENTAI);
+        model = MainActivity.taiKhoanHienTai;
 
         try {
             hoTen.setText(model.getHoTen());

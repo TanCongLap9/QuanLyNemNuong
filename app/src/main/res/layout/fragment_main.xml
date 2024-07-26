@@ -12,13 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16sp"
-        android:text="Kính chào quý khách"
+        android:gravity="center"
+        android:text="Chào mừng đến với ứng dụng\nđặt mua nem nướng"
         android:textSize="24sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quý khách có thể điều hướng bằng cách nhấn vào" />
+        android:text="Người dùng có thể điều hướng bằng cách nhấn vào" />
 
     <LinearLayout
         android:layout_width="wrap_content"

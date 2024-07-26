@@ -66,8 +66,7 @@ public class DangNhapActivity extends AppCompatActivity {
         UserModel model = new UserModel(taiKhoan.getText().toString(), matKhau.getText().toString());
         KhachHangModel khachHangModel;
         if (
-                (khachHangModel = connection.getKhachHangByUser(model)) != null
-                        || (khachHangModel = connection.getNhanVienByUser(model)) != null
+                (khachHangModel = connection.getNguoiDungByUser(model)) != null
         ) {
             if (nhoDangNhap.isChecked()) SharedPrefUtils.setRememberedUser(this, model);
             else SharedPrefUtils.clearRememberedUser(this);

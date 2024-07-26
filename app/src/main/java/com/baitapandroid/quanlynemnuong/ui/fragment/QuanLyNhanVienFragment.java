@@ -105,8 +105,16 @@ public class QuanLyNhanVienFragment extends Fragment {
 
     private void them() {
         SqlConnection connection = new SqlConnection(getContext());
-        connection.insertNhanVien(model);
-        connection.close();
+        try {
+            connection.insertKhachHang(model, true);
+        }
+        catch (Exception exc) {
+            Toast.makeText(getContext(), "Có lỗi xảy ra: " + exc.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        finally {
+            connection.close();
+        }
         Toast.makeText(getContext(), "Thêm nhân viên thành công.", Toast.LENGTH_SHORT).show();
     }
 
@@ -120,7 +128,7 @@ public class QuanLyNhanVienFragment extends Fragment {
                 valid = false;
             }
         }
-        if (insertMode && !matKhau.getText().toString().trim().isEmpty()) {
+        if (insertMode && matKhau.getText().toString().trim().isEmpty()) {
             matKhau.setError("Thông tin này là bắt buộc để tạo tài khoản.");
             valid = false;
         }

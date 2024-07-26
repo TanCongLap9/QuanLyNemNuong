@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    public static KhachHangModel taiKhoanHienTai;
     public static String INTENT_TAIKHOANHIENTAI = "INTENT_TAIKHOANHIENTAI";
     public static String INTENT_GIOHANG = "INTENT_GIOHANG";
     private Animator fadeIn, fadeOut, expand, shrink;
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        taiKhoanHienTai = (KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI);
         loadViews();
-        getIntent().putExtra(INTENT_GIOHANG, new ArrayList<NemNuongModel>());
     }
 
     private void loadViews() {
@@ -58,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
         drawerBackground = findViewById(R.id.main_drawer_background);
         dangXuat = findViewById(R.id.main_dang_xuat);
 
-        findViewById(R.id.main_quan_ly).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);findViewById(R.id.main_khach_hang).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);
-        findViewById(R.id.main_khach_hang).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);findViewById(R.id.main_khach_hang).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);
-        findViewById(R.id.main_nhan_vien).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);findViewById(R.id.main_khach_hang).setVisibility(((KhachHangModel)getIntent().getSerializableExtra(INTENT_TAIKHOANHIENTAI)).isNhanVien() ? View.VISIBLE : View.GONE);
+        int quanLyVisible = taiKhoanHienTai.isNhanVien() ? View.VISIBLE : View.GONE;
+        findViewById(R.id.main_quan_ly).setVisibility(quanLyVisible);
+        findViewById(R.id.main_nhan_vien).setVisibility(quanLyVisible);
+        findViewById(R.id.main_khach_hang).setVisibility(quanLyVisible);
 
         drawer.setVisibility(View.GONE);
         drawerBackground.setVisibility(View.GONE);
@@ -116,23 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 menuShowing = false;
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && ((List<ChiTietGiaoDichModel>)getIntent().getSerializableExtra(INTENT_GIOHANG)).size() != 0)
-            new AlertDialog.Builder(this)
-                    .setTitle("Huỷ bỏ ")
-                    .setMessage("Bạn có muốn huỷ bỏ giỏ hàng hiện tại không?")
-                    .setNegativeButton("Không", null)
-                    .setPositiveButton("Có", this::huyGioHang)
-                    .show();
-        else super.onBackPressed();
-    }
-
-    public void huyGioHang(DialogInterface dialogInterface, int i) {
-        getIntent().putExtra(INTENT_GIOHANG, new ArrayList<NemNuongModel>());
-        super.onBackPressed();
     }
 
     private void dangXuat(View view) {

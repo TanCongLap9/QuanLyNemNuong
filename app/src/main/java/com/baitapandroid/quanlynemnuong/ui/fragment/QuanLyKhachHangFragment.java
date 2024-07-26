@@ -111,8 +111,16 @@ public class QuanLyKhachHangFragment extends Fragment {
 
     private void them() {
         connection = new SqlConnection(getContext());
-        connection.insertKhachHang(model);
-        connection.close();
+        try {
+            connection.insertKhachHang(model, false);
+        }
+        catch (Exception exc) {
+            Toast.makeText(getContext(), "Có lỗi xảy ra: " + exc.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        finally {
+            connection.close();
+        }
         Toast.makeText(getContext(), "Thêm khách hàng thành công.", Toast.LENGTH_SHORT).show();
     }
 
@@ -126,7 +134,7 @@ public class QuanLyKhachHangFragment extends Fragment {
                 valid = false;
             }
         }
-        if (insertMode && !matKhau.getText().toString().trim().isEmpty()) {
+        if (insertMode && matKhau.getText().toString().trim().isEmpty()) {
             matKhau.setError("Thông tin này là bắt buộc để tạo tài khoản.");
             valid = false;
         }
